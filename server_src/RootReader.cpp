@@ -18,8 +18,8 @@ void RootReader::add_resource_to_repository(ResourceRepository &repository){
 	 while (getline(file,line)){
 		 bodystream<<line<<std::endl;
 	 }
-	 std::string body=bodystream.str();
-	 std::string resource("/");
+	 const std::string body=bodystream.str();
+	 const std::string resource("/");
 	 repository.post(resource, body);
 }
 

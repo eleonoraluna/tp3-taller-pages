@@ -1,7 +1,7 @@
 #include "ResourceNotFound.h"
 #include <string>
 
-#define response "HTTP/1.1 404 NOT FOUND\n"
+static const std::string response="HTTP/1.1 404 NOT FOUND\n";
 
 ResourceNotFound::ResourceNotFound() {}
 

@@ -1,8 +1,8 @@
 #include "MethodNotAllowed.h"
 #include <string>
 
-#define first_line "HTTP/1.1 405 METHOD NOT ALLOWED\n\n"
-#define second_line " es un comando desconocido\n"
+static const std::string first_line="HTTP/1.1 405 METHOD NOT ALLOWED\n\n";
+static const std::string second_line=" es un comando desconocido\n";
 
 MethodNotAllowed::MethodNotAllowed(const std::string &name):name(name) {}
 

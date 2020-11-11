@@ -11,13 +11,16 @@ Manager::Manager(const std::string &port,const std::string &filename):
 reader(filename),main_socket(port),isclosed(false){}
 
 void Manager::run(){
-	 this->reader.open_file();
-	 this->reader.add_resource_to_repository(resources);
 	 while (!this->isclosed){
 		  if (this->accept_petition()!=ERROR_ON_ACCEPT){
 			  this->cleanup_finished_petitions();
 		  }
 	 }
+}
+
+void Manager::read_file(){
+	 this->reader.open_file();
+	 this->reader.add_resource_to_repository(resources);
 }
 
 int Manager::accept_petition(){

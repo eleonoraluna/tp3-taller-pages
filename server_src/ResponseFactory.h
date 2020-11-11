@@ -7,6 +7,8 @@
 class ResponseFactory {
 public:
 	ResponseFactory();
+
+	//crean las respuestas del servidor con los parámetros necesarios
 	ServerResponse* create_forbidden_response();
 	ServerResponse* create_method_not_allowed_response(const std::string &name);
 	ServerResponse* create_resource_found_response(const std::string &body);

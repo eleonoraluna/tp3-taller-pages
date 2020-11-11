@@ -6,6 +6,10 @@
 class InputReader {
 public:
 	explicit InputReader(Manager &manager);
+
+	//Hace correr al manager mientras espera por entrada una "q" que
+	//indique que no se aceptan nuevas conexiones frenando
+	//al manager y esperando a que termine
 	void start();
 	virtual ~InputReader();
 

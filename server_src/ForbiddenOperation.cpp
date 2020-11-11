@@ -1,7 +1,7 @@
 #include "ForbiddenOperation.h"
 #include <string>
 
-#define response "HTTP/1.1 403 FORBIDDEN\n\n"
+static const std::string response="HTTP/1.1 403 FORBIDDEN\n\n";
 
 ForbiddenOperation::ForbiddenOperation() {}
 

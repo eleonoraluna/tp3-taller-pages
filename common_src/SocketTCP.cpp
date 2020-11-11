@@ -5,8 +5,6 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <string>
-#include <errno.h>
-#include <iostream>
 #include "SocketTCP.h"
 #include "SocketTCPException.h"
 
@@ -38,12 +36,11 @@ void Socket_TCP::bind(const std::string &port){
 		throw Socket_TCPException();
 	}
 	for (ai=ai_list; ai!=NULL && !connected; ai=ai->ai_next){
-	 if ((this->fd=socket(ai->ai_family,ai->ai_socktype,ai->ai_protocol))==-1){
-		 this->freeAddrinfo(ai_list);
-	 }else if (::bind(this->fd,ai->ai_addr,ai->ai_addrlen)==-1){
-		 this->freeAddrinfo(ai_list);
+	 if ((this->fd=socket(ai->ai_family,ai->ai_socktype,ai->ai_protocol))!=-1){
+		 if (::bind(this->fd,ai->ai_addr,ai->ai_addrlen)!=-1){
+			 connected=true;
+		 }
 	 }
-		connected=true;
 	}
 	freeaddrinfo(ai_list);
 }
@@ -62,11 +59,6 @@ Socket_TCP Socket_TCP::accept() const{
 	return Socket_TCP(fd);
 }
 
-void Socket_TCP::freeAddrinfo(struct addrinfo *ai){
-	freeaddrinfo(ai);
-	throw Socket_TCPException();
-}
-
 void Socket_TCP::connect(const std::string &name,const std::string &port){
 	struct addrinfo hints;
 	struct addrinfo *ai,*ai_list;
@@ -80,19 +72,17 @@ void Socket_TCP::connect(const std::string &name,const std::string &port){
 		throw Socket_TCPException();
 	}
 	for (ai=ai_list; ai!=NULL && !connected; ai=ai->ai_next){
-	 if ((this->fd=socket(ai->ai_family,ai->ai_socktype,ai->ai_protocol))==-1){
-		 this->freeAddrinfo(ai_list);
-	 }else if (::connect(this->fd,ai->ai_addr,ai->ai_addrlen)<0){
-		    this->freeAddrinfo(ai_list);
+	 if ((this->fd=socket(ai->ai_family,ai->ai_socktype,ai->ai_protocol))!=-1){
+		 if (::connect(this->fd,ai->ai_addr,ai->ai_addrlen)!=-1){
+			 connected=true;
+		 }
 	 }
-	connected=true;
 	}
 	freeaddrinfo(ai_list);
 }
 
 void Socket_TCP::recieve(char *buffer, int length) const{
 	int pos=0;
-	//int recieved=0;
 	while(pos<length){
 		int recieved=::recv(this->fd,&buffer[pos],length-pos,0);
 		//sigo recibiendo hasta recibir todos los bytes
@@ -100,9 +90,8 @@ void Socket_TCP::recieve(char *buffer, int length) const{
 			pos=pos+recieved;
 		//recibo 0 bytes. Hicieron un shutdown o llego al EOF
 		} else if (recieved==0){
-			//tengo que cerrar socket
 			throw Socket_TCPException();
-		} else {
+		} else {//error en el rcv
 			throw Socket_TCPException();
 		}
 	}
@@ -110,7 +99,6 @@ void Socket_TCP::recieve(char *buffer, int length) const{
 
 void Socket_TCP::send(const char *buffer, int length) const{
 	 int pos=0;
-	 //int sent=0;
 	 while (pos<length){
 		int sent=::send(this->fd,&buffer[pos],length-pos,MSG_NOSIGNAL);
 		if (sent==0){

@@ -1,9 +1,9 @@
 #include <iostream>
 #include <exception>
 #include "../common_src/SocketTCPException.h"
+#include "FileErrorException.h"
 #include "Manager.h"
 #include "InputReader.h"
-#include "FileErrorException.h"
 
 #define ARGSSERVER 3
 #define ERROR 1
@@ -24,6 +24,9 @@ int main(int argc,char* argv[]){
 	      }catch(const std::exception &e){
 			  std::cout<<e.what()<<std::endl;
 			  return ERROR;
+	      }catch(...){
+	    	  std::cout<<"error desconocido"<<std::endl;
+	    	  return ERROR;
 	      }
 	}else{
 		  std::cout<<"Error: argumentos inválidos."<<std::endl;

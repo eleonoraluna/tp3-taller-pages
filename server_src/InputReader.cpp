@@ -4,6 +4,7 @@
 InputReader::InputReader(Manager &manager):manager(manager) {}
 
 void InputReader::start(){
+	 manager.read_file();
 	 manager.start();
 	 char exit=0;
 	 while (exit!='q'){

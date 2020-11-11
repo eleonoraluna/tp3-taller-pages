@@ -1,7 +1,8 @@
 #ifndef SERVER_SRC_RESOURCEFOUND_H_
 #define SERVER_SRC_RESOURCEFOUND_H_
-#include "ServerResponse.h"
+
 #include <string>
+#include "ServerResponse.h"
 
 class ResourceFound: public ServerResponse {
 public:

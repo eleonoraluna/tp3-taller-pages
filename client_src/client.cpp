@@ -15,6 +15,8 @@ int main(int argc,char* argv[]){
 		  std::cout<<e.what()<<std::endl;
 		}catch(const std::exception &e){
 		  std::cout<<e.what()<<std::endl;
+		}catch(...){
+	      std::cout<<"error desconocido"<<std::endl;
 		}
 	}
 	//retorna siempre 0 como es pedido

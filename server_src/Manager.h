@@ -1,7 +1,9 @@
 #ifndef SERVER_SRC_MANAGER_H_
 #define SERVER_SRC_MANAGER_H_
+
 #include <string>
 #include <vector>
+#include <atomic>
 #include "../common_src/SocketTCP.h"
 #include "server_Thread.h"
 #include "Petition.h"
@@ -11,6 +13,7 @@
 class Manager: public Thread {
 public:
 	explicit Manager(const std::string &port,const std::string &filename);
+	void read_file();
 	void run() override;
 	void stop();
 	virtual ~Manager();

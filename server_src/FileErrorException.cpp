@@ -3,7 +3,7 @@
 FileErrorException::FileErrorException() {}
 
 const char* FileErrorException:: what() const throw(){
-	  return "File error";
+	  return "Error opening file\n";
 }
 
 FileErrorException::~FileErrorException() {}

@@ -13,7 +13,8 @@ const std::string ResourceRepository::get(const std::string &resource){
 	 return body;
 }
 
-void ResourceRepository::post(std::string &resource, std::string &body){
+void ResourceRepository::post(const std::string &resource,
+		                      const std::string &body){
 	 std::unique_lock<std::mutex> lock(this->m);
 	 this->resources.emplace(resource,body);
 }

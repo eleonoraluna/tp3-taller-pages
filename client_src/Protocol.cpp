@@ -4,6 +4,7 @@
 #include <vector>
 #include <cstring>
 #include <string>
+
 #define SHUT_WRITE 1
 
 Protocol::Protocol(const std::string &name,const std::string &port) {

@@ -1,7 +1,7 @@
 #include "PostSuccessful.h"
 #include <string>
 
-#define first_line "HTTP/1.1 200 OK\n\n"
+static const std::string first_line="HTTP/1.1 200 OK\n\n";
 
 PostSuccessful::PostSuccessful(const std::string &body):body(body){}
 

@@ -1,5 +1,6 @@
 #ifndef SERVER_SRC_METHODNOTALLOWED_H_
 #define SERVER_SRC_METHODNOTALLOWED_H_
+
 #include <string>
 #include "ServerResponse.h"
 

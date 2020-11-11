@@ -9,6 +9,8 @@ public:
 	ResourceNotFound();
 	virtual std::string get_response() override;
 	virtual ~ResourceNotFound();
+private:
+	static const char response[];
 };
 
 #endif /* SERVER_SRC_RESOURCENOTFOUND_H_ */

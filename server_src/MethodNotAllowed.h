@@ -11,6 +11,8 @@ public:
 	virtual ~MethodNotAllowed();
 private:
 	std::string name;
+	static const char first_line[];
+	static const char second_line[];
 };
 
 #endif /* SERVER_SRC_METHODNOTALLOWED_H_ */

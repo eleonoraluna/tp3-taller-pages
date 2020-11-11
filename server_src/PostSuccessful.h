@@ -11,6 +11,7 @@ public:
 	virtual ~PostSuccessful();
 private:
 	std::string body;
+	static const char first_line[];
 };
 
 #endif /* SERVER_SRC_POSTSUCCESSFUL_H_ */

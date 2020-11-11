@@ -6,7 +6,7 @@
 
 class Decoder {
 public:
-	explicit Decoder();
+	Decoder();
 
 	//parsea la primer linea del petitorio, la imprime y devuelve
 	//el metodo y el recurso

@@ -9,6 +9,8 @@ public:
 	ForbiddenOperation();
 	virtual std::string get_response() override;
 	virtual ~ForbiddenOperation();
+private:
+	static const char response[];
 };
 
 #endif /* SERVER_SRC_FORBIDDENOPERATION_H_ */

@@ -10,6 +10,7 @@ public:
 	ResourceRepository();
 
 	//devuelve el contenido del recurso indicado
+	//si el recurso no se encuentra, el string devuelto se encuentra vacio
 	const std::string get(const std::string &resource);
 
 	//guarda el recurso correspondiente con el contenido indicado

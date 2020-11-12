@@ -12,7 +12,7 @@
 #### Client.cpp
 
 Es el main del client el cual recibe un host y un puerto al cual debe conectarse y recibe por
-entrada standard un archivo del cual lee el petitorio
+entrada standard un archivo del cual lee el petitorio.
 
 ```
     Ej: ./client localhost 8080 <single_get_root.txt
@@ -59,7 +59,7 @@ El main se encarga de instanciar un **Manager**, pasárselo al **Input_Reader** 
 
 #### Input_Reader
 Se encarga de leer de entrada standard si ingresan o no una "q" indicando que se debe terminar la partida.
-Tiene una referencia al **Manager** y lo hace correr.En el caso de que ingresen una q, le hace un *stop()* y espera a que termine
+Tiene una referencia al **Manager** y lo hace correr. En el caso de que ingresen una q, le hace un *stop()* y espera a que termine
 haciendole un *join()*.
 
 #### Thread
@@ -85,8 +85,8 @@ Se encarga de decodificar las peticiones que envía el cliente. Parsea todos los
 el método, el recurso y el cuerpo de la petición. También, parsea la primer linea del petitorio y la imprime.
 
 #### RootReader
-Se encarga de leer el archivo que contiene el contenido del recurso "/" y lo guarda el el **ResourceRepository**. En el caso de que 
-haya un error al abrir el archivo lanza una **FileErrorException**
+Se encarga de leer el archivo que contiene el contenido del recurso "/" y lo guarda en el **ResourceRepository**. En el caso de que 
+haya un error al abrir el archivo lanza una **FileErrorException**.
 
 #### FileErrorException
 Representa las excepciones que son lanzadas en la clase **RootReader**. Estas se lanzan cuando hubo un error al abrir el

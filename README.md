@@ -39,9 +39,11 @@ enviar el petitorio.
 #### Socket_TCP
 Representa un socket para protocolo TCP. Se encarga de recibir y enviar los buffers que le pasan por parámetros. 
 También se encarga de asegurarse de que se envíen y reciban todos los bytes correspondientes.
-En particular, contiene un método *stop()* que es utilizado cuando el socket aceptador se queda bloqueado en el accept.
-Cuando ingresan una "q" por teclado (para finalizar el servidor) el hilo principal hace que el hilo aceptador (que 
-es owner de un socket) cierre su socket, de tal manera de no quedarse bloqueado en el accept.
+
+#### SocketAcceptor
+Representa al socket aceptador que acepta conexiones nuevas de clientes y crea los sockets clientes correspondientes a esa 
+conexión. En particular, contiene un método *stop()* que es utilizado cuando el socket aceptador se queda bloqueado en el accept.
+Cuando ingresan una "q" por teclado (para finalizar el servidor) el hilo principal hace que el hilo aceptador cierre su socket, de tal manera de no quedarse bloqueado en el accept.
 
 #### Socket_TCPException
 Representa las excepciones que se lanzan en la clase Socket_TCP. Éstas son lanzadas cuando surge algún error en los sockets,

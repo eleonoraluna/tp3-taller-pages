@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <atomic>
-#include "../common_src/SocketTCP.h"
+#include "../common_src/SocketAcceptor.h"
 #include "server_Thread.h"
 #include "Petition.h"
 #include "ResourceRepository.h"
@@ -21,7 +21,7 @@ public:
 private:
 	ResourceRepository resources;
 	RootReader reader;
-	Socket_TCP main_socket;
+	SocketAcceptor main_socket;
 	std::atomic<bool> isclosed;
 	std::vector<Petition*> petitions;
 	int accept_petition();
